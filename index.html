@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="IPIP日本語50項目版を使った、非公式のBig Five自己評定デモ。回答は外部へ送信されません。">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>Big Five 性格チェック</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./js/app.mjs"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Big Five 性格チェック</span></div>
+        <span class="demo-badge">非公式デモ</span>
+      </header>
+
+      <main id="main">
+        <p id="storage-notice" class="notice" role="status" hidden></p>
+        <noscript><p class="notice">このアプリの利用にはJavaScriptを有効にしてください。</p></noscript>
+
+        <section id="start-screen" aria-labelledby="start-title">
+          <div class="intro-layout">
+            <div class="intro-main">
+              <p class="eyebrow">SELF-REFLECTION / 50 QUESTIONS</p>
+              <h1 id="start-title" tabindex="-1">Big Five<br>性格チェック</h1>
+              <p class="intro-lead">いつもの自分を、<br>5つの視点から見つめてみる。</p>
+              <p class="intro-copy">IPIP日本語50項目版を使った自己評定です。普段の自分にどのくらい当てはまるか、5段階で答えてください。</p>
+              <div class="start-actions">
+                <div id="resume-panel" class="resume-panel" hidden>
+                  <p id="resume-description"></p>
+                  <button id="resume-button" class="primary-button" type="button">続きから回答 <span aria-hidden="true">→</span></button>
+                </div>
+                <button id="start-button" class="primary-button" type="button" disabled>読み込み中…</button>
+              </div>
+              <p class="small-note">全50問・正解や不正解はありません</p>
+            </div>
+            <aside class="intro-guide" aria-label="回答の前に">
+              <div class="guide-heading"><span class="section-number">01 — 03</span><h2>回答の前に</h2></div>
+              <ol class="guide-list">
+                <li><h3>普段の自分を思い浮かべる</h3><p>「まったく当てはまらない」から「とてもよく当てはまる」までの5段階で回答します。</p></li>
+                <li><h3>タップで、次の問いへ</h3><p>1問ずつ表示します。選ぶと自動で次に進み、「戻る」で回答を修正できます。</p></li>
+                <li><h3>途中で閉じても、続きから</h3><p>途中回答はこのブラウザのlocalStorageに保存します。回答完了時に削除し、結果は再読み込みすると消えます。</p></li>
+              </ol>
+              <div class="privacy-note"><span aria-hidden="true">◎</span><p>回答データを外部に送信しません。ログイン・アクセス解析・回答履歴の保存はありません。</p></div>
+            </aside>
+          </div>
+          <div class="context-note"><strong>自己理解のための、非公式デモです。</strong><p>性格を断定するものでも、医学的・心理学的な診断でもありません。結果は今回の回答を5つの因子にまとめた得点です。</p></div>
+        </section>
+
+        <section id="question-screen" class="question-screen" aria-labelledby="question-title" hidden>
+          <div class="question-topline"><span class="eyebrow">YOUR RESPONSE</span><p id="question-progress" class="question-progress"></p></div>
+          <progress id="progress" max="50" value="0" aria-label="回答済みの項目数"></progress>
+          <div class="question-card">
+            <p id="question-number" class="section-number"></p>
+            <h2 id="question-title" tabindex="-1"></h2>
+            <p id="answer-instruction" class="answer-instruction">普段のあなたに、どのくらい当てはまりますか？</p>
+            <div id="answer-options" class="answer-options" role="group" aria-labelledby="question-title" aria-describedby="answer-instruction">
+              <button type="button" class="answer-button" data-value="1" aria-pressed="false"><span class="option-number" aria-hidden="true">1</span><span>まったく当てはまらない</span><span class="selection-mark" aria-hidden="true">✓</span></button>
+              <button type="button" class="answer-button" data-value="2" aria-pressed="false"><span class="option-number" aria-hidden="true">2</span><span>あまり当てはまらない</span><span class="selection-mark" aria-hidden="true">✓</span></button>
+              <button type="button" class="answer-button" data-value="3" aria-pressed="false"><span class="option-number" aria-hidden="true">3</span><span>どちらともいえない</span><span class="selection-mark" aria-hidden="true">✓</span></button>
+              <button type="button" class="answer-button" data-value="4" aria-pressed="false"><span class="option-number" aria-hidden="true">4</span><span>やや当てはまる</span><span class="selection-mark" aria-hidden="true">✓</span></button>
+              <button type="button" class="answer-button" data-value="5" aria-pressed="false"><span class="option-number" aria-hidden="true">5</span><span>とてもよく当てはまる</span><span class="selection-mark" aria-hidden="true">✓</span></button>
+            </div>
+            <p id="answer-feedback" class="answer-feedback" role="status"></p>
+            <div class="question-navigation"><button id="back-button" class="text-button" type="button">← 戻る</button><button id="pause-button" class="text-button" type="button">いったん中断</button></div>
+          </div>
+          <p class="question-note">回答はこのブラウザ内にのみ保存されます。</p>
+        </section>
+
+        <section id="result-screen" aria-labelledby="result-title" hidden>
+          <div class="result-heading"><p class="eyebrow">YOUR FIVE PERSPECTIVES</p><h1 id="result-title" tabindex="-1">今回の回答結果</h1><p>50問の回答を、5つの因子にまとめました。</p></div>
+          <div class="result-explanation"><p>各因子10項目の合計得点です。すべて同じ<strong>10〜50点</strong>の尺度で表示しています。人口平均との差や順位、良し悪しを示すものではありません。</p></div>
+          <div id="result-cards" class="result-cards"></div>
+          <div class="context-note"><strong>結果は、自己理解のひとつの手がかりです。</strong><p>今回の自己評定を示しており、性格の断定や医学的・心理学的な診断は行いません。情緒安定性（神経症傾向の反転）は、神経症傾向と反対向きの得点です。</p></div>
+          <p id="completion-note" class="small-note"></p>
+          <button id="restart-button" class="primary-button" type="button">開始画面に戻る <span aria-hidden="true">↗</span></button>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <details><summary>使用尺度・出典について</summary><div class="source-content"><p>IPIP（International Personality Item Pool）のBig-Five Factor Markers、日本語50項目版を使用しています。日本語訳提供：中山実氏（Minoru Nakayama）。各因子10項目、計50項目です。項目の文言と掲載順は日本語公式掲載ページに従っています。</p><ul><li><a href="https://ipip.ori.org/JapaneseBig-FiveFactorMarkers.htm" target="_blank" rel="noopener noreferrer">IPIP 日本語50項目版 ↗</a></li><li><a href="https://ipip.ori.org/newBigFive5broadKey.htm" target="_blank" rel="noopener noreferrer">公式採点キー（各因子10項目版）↗</a></li><li><a href="https://ipip.ori.org/newScoringInstructions.htm" target="_blank" rel="noopener noreferrer">公式採点方法 ↗</a></li></ul><p>本アプリはIPIPや日本語訳提供者の公式アプリではありません。</p></div></details>
+        <p class="footer-caption">Big Five 性格チェック <span>非公式デモ / 回答は外部に送信されません</span></p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,5 +1,7 @@
 // 出典: https://ipip.ori.org/JapaneseBig-FiveFactorMarkers.htm
-// 日本語訳提供: 中山実氏。配列の位置 + 1 が公式ページの項目番号。
+// 日本語訳提供: 中山実氏（Minoru Nakayama）。訳文は本プロジェクトのMITライセンス対象外。
+// MITは権利を保有する独自コードにのみ適用。訳文の独立した再配布条件は未確認（README参照）。
+// 配列の位置 + 1 が公式ページの項目番号。
 // 表のレイアウト用空白を除き、文言と順序をそのまま収録。
 export const QUESTIONS = Object.freeze([
   '盛り上げ役である',

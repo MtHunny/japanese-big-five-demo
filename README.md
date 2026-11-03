@@ -9,7 +9,25 @@ HTML・CSS・Vanilla JavaScriptのみで動作する静的サイトです。フ�
 - [IPIP 日本語50項目版](https://ipip.ori.org/JapaneseBig-FiveFactorMarkers.htm)：日本語訳提供は中山実氏（Minoru Nakayama）。公式掲載の50項目を同じ文言・順序で収録しています（表のレイアウト用空白を除く）。
 - [Big-Five Factor Markers 公式採点キー](https://ipip.ori.org/newBigFive5broadKey.htm)：各因子の **10-item scale** を使用します。5因子合計で50項目です。
 - [IPIP公式採点方法](https://ipip.ori.org/newScoringInstructions.htm)
-- [IPIPの利用許可に関する公式説明](https://ipip.ori.org/newPermission.htm)：IPIP資料はパブリックドメインとして提供されると説明されています。この記載を本リポジトリ全体のライセンス宣言に転用するものではありません。
+- [IPIPの利用許可に関する公式説明](https://ipip.ori.org/newPermission.htm)
+
+## ライセンスと権利関係
+
+本プロジェクトが権利を保有する範囲で、本アプリ独自のソースコードに[MITライセンス](LICENSE)を適用します。著作権表示は `Copyright (c) 2026 MtHunny` です。
+
+IPIPの原尺度・採点キーは、[IPIP公式の説明](https://ipip.ori.org/newPermission.htm)に従い、パブリックドメインとして扱います。本プロジェクトがこれらの原資料に新たなMITライセンスを付与するものではありません。
+
+`js/questions.mjs` に収録された日本語50項目の訳文は、[IPIP公式掲載ページ](https://ipip.ori.org/JapaneseBig-FiveFactorMarkers.htm)で中山実氏（Minoru Nakayama）提供として紹介されているものです。この訳文は、本プロジェクトが付与するMITライセンスの対象外です。第三者の著作物に対して、本プロジェクトが独自にMITライセンスを付与するものではありません。
+
+日本語訳自体の独立した再配布条件は、現時点では明示的に確認できていません。出典表記は利用許諾の代わりになるものではありません。下記論文は参考文献として掲載しており、その引用が日本語訳の再配布許諾の条件であると確認したものではありません。
+
+本アプリはIPIPおよび日本語訳提供者の公式アプリではありません。
+
+### 参考文献
+
+Apple, M. T., & Neff, P. (2012). Using Rasch measurement to validate the Big Five factor marker questionnaire for a Japanese university population. Journal of Applied Measurement, 13(3), 276–296.
+
+書誌情報：[PubMed（PMID: 23234830）](https://pubmed.ncbi.nlm.nih.gov/23234830/)
 
 ## ローカルで実行する
 
@@ -89,6 +107,7 @@ node --test tests/*.test.mjs
 
 | ファイル | 役割 |
 | --- | --- |
+| `LICENSE` | 本プロジェクト独自のソースコードに適用するMITライセンス本文（適用範囲は上記「ライセンスと権利関係」を参照） |
 | `index.html` | 開始・回答・結果画面、出典 |
 | `styles.css` | レスポンシブ表示、選択状態、グラフ |
 | `js/questions.mjs` | 公式掲載順の日本語50項目 |
